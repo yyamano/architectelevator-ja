@@ -14,8 +14,8 @@ layout: articles
 [5]: https://architectelevator.com/book/37things
 [6]: https://architectelevator.com/assets/img/37things_medium_stars.jpg
 
-[![Software Architect Elevator][2]{:height="20%" width="20%"}][1]
-[![Cloud Strategy][4]{:height="20%" width="20%"}][3]
-[![37 Things One Architect Knows][6]{:height="20%" width="20%"}][5]
+[![Software Architect Elevator][2]{:height="30%" width="30%"}][1]
+[![Cloud Strategy][4]{:height="30%" width="30%"}][3]
+[![37 Things One Architect Knows][6]{:height="30%" width="30%"}][5]
 
 ## 記事一覧
