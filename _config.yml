@@ -1,7 +1,7 @@
 theme: jekyll-theme-slate
 lang: ja-JP
 title: Architect Elevator Blog日本語版
-description: Real life writes the best stories, so ride the architect elevator up and down Enterprise IT with me.
+description: Real life writes the best stories, so ride the architect elevator up and down Enterprise IT with me. -- Gregor Hohpe
 original:
   url: https://architectelevator.com/blog/
   author:
