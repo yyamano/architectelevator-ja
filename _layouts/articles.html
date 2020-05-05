@@ -27,7 +27,7 @@
         <ul>
           {% for p in site.pages %}
           {% if p.path != "index.md" and p.path != "assets/css/style.scss" %}
-          <li><a href="/{{ site.github.repository_name }}{{ p.url }}">{{ p.title }}</a>
+          <li><a href=".{{ p.url }}">{{ p.title }}</a>
           {% endif %}
           {% endfor %}
         </ul>
