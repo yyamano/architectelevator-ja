@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+# Installation
 
-You can use the [editor on GitHub](https://github.com/yyamano/architectelevator-ja/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Requirements
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Install the followings with pkgsrc.
 
-### Markdown
+* www/curl
+* security/mozilla-rootcerts-openssl
+* lang/ruby27
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Setup the repo
 
-```markdown
-Syntax highlighted code block
+~~~
+% git clone https://github.com/yyamano/architectelevator-ja.git
+% cd architectelevator-ja
+% bundle27 install vendor/bundle
+~~~
 
-# Header 1
-## Header 2
-### Header 3
+# Build the site locally
 
-- Bulleted
-- List
+~~~
+% bundle27 exec jekyll serve
+~~~
 
-1. Numbered
-2. List
+~~~
+% open http://127.0.0.1:4000
+~~~
 
-**Bold** and _Italic_ and `Code` text
+# How to add the new article
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yyamano/architectelevator-ja/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* _original_htmls
+* directory hier
