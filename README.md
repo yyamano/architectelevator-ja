@@ -28,5 +28,14 @@ Install the followings with pkgsrc.
 
 # How to add the new article
 
-* _original_htmls
-* directory hier
+~~~
+% cd architectelevator-ja
+% mkdir -p _original_htmls/PATH/TO/THE/ARTICLE
+% curl https://architectelevator.com/PATH/TO/THE/ARTICLE/ > _original_htmls/PATH/TO/THE/ARTICLE/index.html
+% mkdir -p PATH/TO/THE/ARTICLE
+% cp _original_htmls/PATH/TO/THE/ARTICLE/index.html PATH/TO/THE/ARTICLE/index.md
+~~~
+
+# Directory hierarchy
+
+TODO
