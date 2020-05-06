@@ -23,7 +23,7 @@ original:
 - **ハイブリッド**: ワークロードをクラウドとオンプレに分割します。一般的にこれらのワークロードは一つのアプリケーションです。つまり、クラウド上のワークロードとオンプレ上のワークロードは何かを行うために協調して動作します。
 - **マルチ**: 複数のクラウドプロバイダー上でワークロードを稼働させます。より正確な定義を求めるなら、意見は分かれてしまいます。
 
-![Hybrid and multi](https://architectelevator.com/assets/img/hybrid_multi.png)
+![Hybrid and multi](https://architectelevator.com/assets/img/hybrid_multi.png){: style="margin-left: auto;margin-right: auto;display: block;"}
 
 オンプレをマルチクラウドの一部だと考える人たちもいます(「*マルチクラウドの設定にはプライベートコンピューティング環境も含まれます*」)。[GCP](https://cloud.google.com/solutions/hybrid-and-multi-cloud-patterns-and-practices)もこの一派です。この二つは確かに技術的に関連していますが(「オンプレは単にもう一つのデータセンターにすぎません」)、ハイブリッドをマルチクラウドの一種と考えることができるのであれば、*マルチハイブリッド*という用語を使う必要はないでしょう。混乱してきましたか。では、別の視点で考えてみましょう。
 
@@ -39,7 +39,7 @@ original:
 
 マルチクラウドを使う理由を理解するために、技術的なプラットフォームアーキテクチャを一般的なシナリオに分割してみましょう。「マルチクラウド」のスローガンのもとにパッケージ化されたものは、以下のカテゴリに分類できます。
 
-![Multi-cloud architecture styles](https://architectelevator.com/assets/img/multi_options.png)
+![Multi-cloud architecture styles](https://architectelevator.com/assets/img/multi_options.png){: style="margin-left: auto;margin-right: auto;display: block;"}
 
 この比較において、大きな番号の方が良いというわけではありません。ニーズに一致するアプローチを見つけ、適切な選択をおこなうためのものです。
 
@@ -47,7 +47,7 @@ original:
 
 ### 任意(Arbitrary)
 
-![Arbitrary multi-cloud](https://architectelevator.com/assets/img/multi_arbitrary.png)
+![Arbitrary multi-cloud](https://architectelevator.com/assets/img/multi_arbitrary.png){: style="float:right;max-width:60%;padding-left:10px;padding-top:1em"}
 
 大企業が私たちに一つ教えてくれることがあるとすると、現実はプレゼンテーションスライドのようにはいかないという事です。この論理(そしていつもの皮肉)をマルチクラウドに当てはめると、企業のマルチクラウドの多くはガバナンスの不在と行き過ぎたベンダーの影響力の結果であることがわかります。つまり、いくつかのワークロードはブルークラウドで、また別のワークロードはライトブルークラウド、そしてレインボークラウドで動いているものもあるという状況です。どうしてこんな事になるのでしょうか。最初はオレンジクラウドで始めたはずです。次に、既存のライセンス契約のおかげでライトブルークラウドから大幅な割引をしてもらいました。また、新しもの好きな若者達はレインボークラウドが大好きです。そして、注意深く観察してみると、人脈とセールスの強烈な売り込みによるレッドクラウドも見つかるかもしれません。
 
@@ -55,7 +55,7 @@ original:
 
 ### 分割(Segmented)
 
-![Segmented multi-cloud](https://architectelevator.com/assets/img/multi_segmented.png)
+![Segmented multi-cloud](https://architectelevator.com/assets/img/multi_segmented.png){: style="float:right;max-width:60%;padding-left:10px;padding-top:1em"}
 
 ワークロードを異なるクラウドへ分割するのは一般的で良い一歩です。特定の種類のワークロードを特定のクラウドにデプロイします。
 
@@ -73,7 +73,7 @@ original:
 
 ### 選択(Choice)
 
-![Free choice multi-cloud](https://architectelevator.com/assets/img/multi_choice.png)
+![Free choice multi-cloud](https://architectelevator.com/assets/img/multi_choice.png){: style="float:right;max-width:60%;padding-left:10px;padding-top:1em"}
 
 多くの人は、先の二つの例を*本物の*マルチクラウドとは考えないかもしれません。彼らが求めている(そして売り込んでいる)のは、ワークロードを自由に色々なクラウドプロバイダーにデプロイできることです。そうすれば、ロックイン(あるいはそう認識しているもの)を最低限にすることができます。通常、これは抽象化レイヤー、あるいはガバナンスフレームワークを構築する事により実現されます。複数のクラウドの特色を認識しつつ、クラウドプラットフォームの最初の選択が可能となります。ただし、後で気が変わらない前提です。
 
@@ -83,7 +83,7 @@ original:
 
 ### 並列(Parallel)
 
-![Parallel multi-cloud](https://architectelevator.com/assets/img/multi_parallel.png)
+![Parallel multi-cloud](https://architectelevator.com/assets/img/multi_parallel.png){: style="float:right;max-width:60%;padding-left:10px;padding-top:1em"}
 
 ひとつ前の方法はクラウドサービスプロバイダーの選択を可能にしますが、そのプロバイダーのサービスレベルに縛られます。多くの企業は、一つのプロバイダーの複数のアベイラビリティゾーンの利用より高いレベルの可用性を保障するために、クリティカルなアプリケショーンを複数のクラウドにデプロイしようとしています。
 
@@ -102,7 +102,7 @@ original:
 
 ## 移行可能(Portable)
 
-![Portable multi-cloud](https://architectelevator.com/assets/img/multi_portable.png)
+![Portable multi-cloud](https://architectelevator.com/assets/img/multi_portable.png){: style="float:right;max-width:60%;padding-left:10px;padding-top:1em"}
 
 マルチクラウドの頂点と考えられているのは、クラウド間の自由な移行です。つまり、ワークロードをどこにでもデプロイでき、好きな所に移動できることです。利点は明白です。例えば、ベンダーロックインを避けることができるので、ベンダーに対する交渉力を手に入れることができます。リソースニーズにもとづきアプリケーションを移動することもできます。例えば、普段はあるクラウド上で処理を実行し、バーストした大量トラフィックを他のクラウドで実行することができます。
 
