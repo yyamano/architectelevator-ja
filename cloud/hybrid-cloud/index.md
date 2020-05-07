@@ -19,7 +19,7 @@ original:
 
 真っ当なクラウドコンピューティング戦略を定義しようとすると十分な複雑さを扱う必要があるので、単純な定義が一番役にたちます。単純な定義は、さまざまな人々がコンセプトや決定にアクセスするのを助けます。しかし、それだけではなく、何からできているかに焦点を当てるかわりに、どのように利用されるのかを強調します(構造ではなく*意図*に焦点を合わせるのはパターンの著者の傾向なのかもしれません)。
 
-残念ながら、定義することは最初の一歩にすぎません。それを実行可能なものにするためには、何か具体的なものに発展させる必要があります。そのために、*アーキテクトエレベータ*に乗って数階降りて、重要なニュアンスを理解し、分類してみましょう。
+残念ながら、定義は最初の一歩にすぎません。それを実現するためには具体的なものに発展させる必要があります。そのために、*アーキテクトエレベータ*に乗って数階降りて、重要なニュアンスを理解し、分類してみましょう。
 
 ## 二つに分離された環境はハイブリッドではない 
 
@@ -91,183 +91,142 @@ original:
 
 密接な関係があるのは、*新しいもの*と*古いもの*の分割です。すでに説明したように、新しいシステムは一般的にスケーラブル、かつ独立してデプロイできるように設計されているため、クラウドが住処であることが多いでしょう。また、新しいシステムは比較的小規模で、*クラウドネイティブ*と呼ばれるにふさわしいものです。クラウドネイティブという言葉はクラウドへの移行(移住)を禁じているように見えるので好きではありませんが。
 
-<p>Again, several reasons speak for this type of split:</p>
+繰り返しになりますが、この分割には理由があります。
 
-<ul>
-  <li>Modern components are more likely to use modern tool chains and architectures, such as micro-services, continuous integration (CI), automated tests and deployment, etc. Hence they can take better advantage of cloud offerings.</li>
-  <li>Modern components are more likely to run in containers and can thus utilize higher-level cloud services like managed Kubernetes or serverless environments.</li>
-  <li>Modern components are more likely to be well-understood and tested, reducing the migration risk.</li>
-</ul>
+- 新しいコンポーネントはマイクロサービス、継続的インテグレーション(CI)、テストとデプロイの自動化のような最新のツールとアーキテクチャを使うことが多いでしょう。したがって、クラウドをよく活用できます。
+- 新しいコンポーネントはコンテナ上で稼働することが多いので、マネージドKubernetesやサーバーレス環境のような高度なレベルのクラウドサービスを利用することができます。
+- 新しいコンポーネントはよく理解されテストされていることが多いので、移行リスクが軽減されます。
 
-<p>Again, there are a few things to consider:</p>
+繰り返しになりますが、考慮すべきこともあります。
 
-<ul>
-  <li>Splitting by <em>new</em> vs <em>old</em> may not align well with the existing systems architecture, meaning it isn’t hitting a good <em>seam</em>. For example, splitting highly cohesive components across data center boundaries will likely result in poor performance.</li>
-  <li>Unless you are in the process of replacing all components over time, this strategy doesn’t lead to a “100% in the cloud” outcome.</li>
-</ul>
+- *新しいもの*と*古いもの*の分割は、既存のシステムのアーキテクチャとうまく一致しないかもしれません。つまり、良い*つなぎ目*ではないのです。例えば、凝集性の高いコンポーネントをデータセンターの境界を超えて分割すると、パフォーマンスが低下する可能性があります。
+- 長い時間をかけて全てのコンポーネントを入れ替えているのでなければ、この戦略は「全てをクラウド」に到達しません。
 
-<p>Overall this is a good approach if you are developing new systems - ultimately <em>new</em> will replace <em>old</em>.</p>
+新しいシステムを開発しているのであれば、これは全体としては良いアプローチと言えます。最終的に*新しいもの*で*古いもの*を置き換えます。
 
 ### 重要度: 重要でないものと重要なもの (Criticality: Non-critical vs. Critical)
 
 ![Separating by criticality](https://architectelevator.com/assets/img/hybrid_criticality.png){: style="float:right;max-width:50%;padding-left:10px;padding-top:1em"}
 
-<p>Many enterprises prefer to first dip their toe into the cloud water before going all out. They are likely to try the cloud with a few simple applications that can accommodate the initial learning curve and the inevitable mistakes. “Failing fast” and learning along the way makes sense:</p>
+多くの企業は本腰を入れる前につま先を水につけることを好みます。初期の学習曲線と避けがたい失敗を許容できるいくつかの単純なアプリケーションでクラウドを試すでしょう。「早く失敗」し、その過程で学ぶのはもっともな話です。
 
-<ul>
-  <li>Skill set availability is one of the main inhibitors of moving to the cloud - stuff is never as easy as shown in the vendor demos. Therefore, starting small and getting rapid feedback builds much needed skills in a low-risk environment.</li>
-  <li>Smaller applications benefit from the cloud self-service approach because it reduces or eliminates the fixed overhead common in on-premise IT.</li>
-  <li>Small applications also give you timely feedback and allow you to calibrate your expectations.</li>
-</ul>
+- スキルセットの取得はクラウド移行の主な阻害要因の一つです。ベンダーのデモほど物事は簡単ではありません。したがって、小規模なものからはじめてすぐにフィードバックを得ることにより、低リスクな環境で必要なスキルを手に入れることができます。
+- 小規模なアプリケーションはクラウドのセルフサービスのアプローチによる恩恵を受けることができます。オンプレミスで一般的な固定のオーバヘッドを削減、あるいは無くすことができます。
+- 小規模なアプリケーションはタイムリーなフィードバックを与えるので、あなたの期待を修正することができます。
 
-<p>While moving non-critical applications out to the cloud is a good start, it also has some limitations:</p>
+重要でないアプリケーションのクラウドへの移行は良いスタートです。しかし、限界もあります。
 
-<ul>
-  <li>Cloud providers generally offer <em>better</em> uptime and security than on-premises environments, so you’ll likely gain more by moving <em>critical</em> workloads.</li>
-  <li>While you can learn a lot from moving simple applications, they may not have the same security, up-time, and scalability requirements as subsequent workloads. You therefore need to be cautious to not under-estimate the effort of a full migration.</li>
-</ul>
+- 一般的にクラウドプロバイダーはオンプレミス環境より*良い*アップタイムとセキュリティを提供します。したがって、*重要な*ワークロードの移行はよりメリットがあるでしょう。
+- 単純なアプリケーションの移行から多くのことを学ぶことができますが、これから移行するアプリケーションとはセキュリティ、アップタイム、スケーラビリティに関する要件が異なるかもしれません。完全な移行にかかる労力を過小評価しないように注意してください。
 
-<p>Overall it’s a good “tip your toe into the water” strategy that certainly beats a “let’s wait until all this settles” approach.</p>
-
+一般的には「つま先を水につける」戦略は「全てが落ち着くまで待て」アプローチに勝ります。
 
 ### ライフサイクル: 開発と本番 (Lifecycle: Development vs. Production)
 
 ![Separating by lifecycle](https://architectelevator.com/assets/img/hybrid_lifecycle.png){: style="float:right;max-width:50%;padding-left:10px;padding-top:1em"}
 
-<p>There are many ways to slice the proverbial elephant (eggplant for vegetarians like me). Rather than just considering splits across run-time components, a whole different approach is to split by application lifecycle. For example, you can run your tool chain, test, and staging environments in the cloud while keeping production on premises, e.g. due to regulatory constraints.</p>
+ことわざに出てくる像(私のようなベジタリアンにとってはナス)を分割する方法はたくさんあります。ランタイムコンポーネントの分割とは異なる別のアプローチはアプリケーションライフサイクルによる分割です。例えば、規制による制約のため本番環境はオンプレミスのままで、ツール類、テスト、ステージング環境をクラウドで実行することができます。
 
-<p>Shifting build and test environments into the cloud is a good idea for several reasons:</p>
+ビルドとテスト環境をクラウドに移行するのは良いアイデアです。
 
-<ul>
-  <li>Build and test environments rarely contain real customer data, so most concerns around data privacy and locality don’t apply.</li>
-  <li>Development, test, and build environments are temporary in nature, so being able to set them up when needed and tearing them back down leverages the elasticity of the cloud and can cut infrastructure costs by a factor of 3 or more: the core working hours make up less than a third of 168 hours in a week. Functional test environments may even have shorter duty cycles, depending on how quickly they can spin up.</li>
-  <li>Many build systems are failure tolerant, so you can shave off even more Dollars by using <em><a href="https://cloud.google.com/preemptible-vms/" target="_blank">preemptible</a></em> / <em><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html" target="_blank">spot</a></em> compute instances.</li>
-</ul>
+- ビルドとテスト環境で本物の顧客データを使うことはほとんどありません。データのプライバシーと局所性に関するほとんどの懸念は当てはまりません。
+- 開発、テスト、ビルド環境は本質的に一時的なものです。したがって、クラウドの柔軟性を利用し、必要に応じて構築、削除することによってインフラストラクチャのコストを三倍以上削減できます。一週間で考えると、コアの稼働時間は168時間の三分の一未満になります。機能テスト環境は立ち上がりのはやさに応じて、より稼働時間が短くなるでしょう。
+- 多くのビルドシステム耐障害性が高いため、[プリエンプティブルインスタンス](https://cloud.google.com/preemptible-vms/)や[スポットインスタンス](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)を使うことにより、さらに多くの費用を削減できます。
 
-<p>You might have guessed that architecture is the business of trade-offs, so once again we have a few things to watch out for:</p>
+アーキテクチャはトレードオフの問題であることはご存知でしょう。したがって、次の点に注意してください。
 
-<ul>
-  <li>Splitting your software lifecycle across cloud and on-premises results in a test environment that’s different from production. This is risky as you might not detect performance bottlenecks or subtle differences that can cause bugs to surface only in production.</li>
-  <li>If your build chain generates large artifacts you may face delays or egress charges when deploying those to your premises.</li>
-</ul>
+- ソフトウェアのライフサイクルをオンプレミスとクラウドに分割すると、テスト環境が本番環境と異なります。パフォーマンスのボトルネックや本番環境でのみバグが発生する可能性のある微妙な差異を検出できないかもしれないので危険です。
+- ビルドツールが生成する成果物が大きい場合、それをオンプレミスにデプロイする時に遅延が発生したり、外向きの通信料金が問題になるかもしれません。
 
-<p>This option may be most popular for development teams that are restrained from running production workloads in the cloud but still want to take as much advantage of it as possible.</p>
+これは、本番用のワークロードをクラウドで動かすことが禁じられているが、クラウドをできる限り活用したい開発チームにとって最も一般的な選択肢です。
 
-<hr />
-
-### データの分類: 機密性の高くないものと機密性の高いもの (Data Classification: Non-sensitive vs. Sensitive)
+### データ区分: 機密性の高くないものと機密性の高いもの (Data Classification: Non-sensitive vs. Sensitive)
 
 ![Separating by data classification](https://architectelevator.com/assets/img/hybrid_classification.png){: style="float:right;max-width:50%;padding-left:10px;padding-top:1em"}
 
-<p>The compute aspect of hybrid cloud is comparatively simple because code can easily be re-deployed into different environments. Data is a different story: data largely resides in one place and needs to be migrated or synchronized if it’s meant to go somewhere else. If you move your compute and keep the data on premises, you’ll likely incur a heavy performance penalty. Therefore, it’s the data that often prevents the move to the cloud.</p>
+ハイブリッドクラウドの計算という側面は比較的単純です。コードを異なる環境に再デプロイするのは簡単です。データは違います。データは大体一箇所にあるので、移行、あるいは同期が必要です。計算処理だけを移行し、データはオンプレミスに置いたままにすると、パフォーマンスが大幅に低下するでしょう。つまり、クラウドへの移行を妨げることが多いのはデータです。
 
-<p>As data classification can be the hurdle for moving apps to the cloud, a natural split would be to move non-sensitive data to the cloud while keeping sensitive data on premises. Doing so has some distinct advantages:</p>
+データ区分はアプリケーションをクラウドに移行する際の障害となる可能性があるので、機密性の高いデータをオンプレに置いたままにするために、機密性の低いデータだけをクラウドに移行するのは自然な分割方法です。
 
-<ul>
-  <li>It complies with common internal regulations related to data residency as sensitive data will remain on your promises and isn’t replicated into other regions.</li>
-  <li>It limits your exposure in case of a possible cloud data breach.</li>
-</ul>
+- 機密性の高いデータはオンプレミスに残り他のリージョンに複製されないので、データの保存場所に関する一般的な内部基準に準拠しています。
+- クラウドからの情報漏洩が発生したとしても被害を限定することができます。
 
-<p>However, the approach is rooted in assumptions that don’t necessarily hold true for today’s computing environments:</p>
+しかしながら、このアプローチは今日のコンピューティング環境に必ずしも当てはまらない前提に基づいています。
 
-<ul>
-  <li>Protecting on premises environments from sophisticated attacks and low-level exploits has become a difficult proposition. For example, CPU-level exploits like <a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)" target="_blank">Spectre</a> and <a href="https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)" target="_blank">Meltdown</a> were corrected by some cloud providers before they were announced - something that couldn’t be done on premises.</li>
-  <li>Malicious data access and exploits don’t always access data directly but often go through many “hops”. Having some systems in the cloud while your sensitive data remains on premises doesn’t automatically mean your data is secure. For example, one of the biggest data breaches, the <a href="https://en.wikipedia.org/wiki/Equifax#May%E2%80%93July_2017_data_breach" target="_blank">Equifax Data Breach</a> that affected up to 145 million customer records had data stored on premises.</li>
-</ul>
+- 洗練された攻撃や低レベルの脆弱性からオンプレミスを守ることは困難な問題になっています。
+例えば、[Spectre](https://en.wikipedia.org/wiki/Spectre_(security_vulnerability))や[Meltdown](https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability))のようなCPUレベルの脆弱性はアナウンス前に一部のクラウドプロバイダーによって修正されました。これはオンプレミスでは実現できませんでした。
+- 悪意あるデータアクセスや攻撃は必ずしもデータに直接アクセスするわけではありません。しばしば、たくさんの「ホップ」を経由します。クラウドにシステムを持っている場合、機密性の高いデータをオンプレミスに置いてあるからといってデータが安全だとは限りません。例えば、最悪のデータ漏洩の一つであり、最大1億4500万件の顧客のレコードに影響した[Equifaxのデータ漏洩](https://en.wikipedia.org/wiki/Equifax#May%E2%80%93July_2017_data_breach)ではデータはオンプレミスに保存されていました。
 
-<p>Hence, while this approach may be suitable to getting started in face of regulatory or policy constraints, use it with caution as a long-term strategy.</p>
-
-<hr />
+したがって、このアプローチは規制やポリシーの制約に対応するために使い始めるのには適しているかもしれませんが、長期的な戦略として用いる場合には注意が必要です。
 
 ### データの鮮度: バックアップと稼働中 (Data Freshness: Back-up vs. Operational)
 
 ![Separating by data freshness](https://architectelevator.com/assets/img/hybrid_freshness.png){: style="float:right;max-width:50%;padding-left:10px;padding-top:1em"}
 
-<p>Not all your data is accessed by applications all the time. In fact, in many enterprises a vast majority of data is “cold”, meaning it’s accessed rarely. That’s the case for example for historical records or back-ups. Cloud providers offer appealing options for data that’s rarely accessed. <a href="https://aws.amazon.com/glacier/" target="_blank">Amazon’s Glacier</a> was one of the earliest offerings to specifically target that use case while other providers have special tiers for their storage service, e.g. <a href="https://azure.microsoft.com/en-us/services/storage/archive/" target="_blank">Azure Storage Archive Tier</a> and <a href="https://cloud.google.com/storage/docs/storage-classes" target="_blank">GCP Coldline Cloud Storage </a>.</p>
+全てのデータは常にアプリケーションによってアクセスされるわけではありません。実際のところ、多くの企業では大部分のデータが「コールド」、つまり滅多にアクセスされません。例えば、過去のレコードやバックアップがそうです。クラウドプロバイダーは滅多にアクセスされないデータ向けの魅力的な選択肢を提供しています。[AmazonのGlacier](https://aws.amazon.com/glacier/)はこのようなユースケースを対象とした初期の製品の一つでした。[Azure Storage Archive Tier](https://azure.microsoft.com/en-us/services/storage/archive/)や[GCP Coldline Cloud Storage](https://cloud.google.com/storage/docs/storage-classes)のような特別なストレージサービス層を提供しているプロバイダもあります。
 
-<p>Archiving data in the cloud makes good sense:</p>
+データをクラウドにアーカイブすることは道理にかなっています。
 
-<ul>
-  <li>Backing up and restoring data usually occurs separate from regular operations, so it allows you to take advantage of the cloud without having to migrate or re-architect applications.</li>
-  <li>For older applications, data storage cost can make up a significant percentage of the overall operational costs, so moving some of this to the cloud can give you instant cost savings.</li>
-  <li>For archiving purposes, it’s good to have data in a location separate from your usual data center.</li>
-</ul>
+- バックアップとリストアは一般的に通常のオペレーションとは別に発生します。したがって、アプリケーションの移行や再設計なしに、クラウドを活用することができます。
+- 古いアプリケーションにとってデータストレージの費用は、運用費全体の中で大きな割合を占める可能性があります。このような場合、いくつかのデータをクラウドに移動する事によりすぐに費用を削減できます。
+- アーカイブという目的のためには、普段使っているデータセンターから離れた場所にデータを置くのは良い事です。
 
-<p>Alas, it also has limitations:</p>
-<ul>
-  <li>Data recovery costs can be high, so you’d only want to move data that you rarely need.</li>
-  <li>The data you’d want to back up likely contains customer or other proprietary data, so you might need to encrypt or otherwise protect that data, which can interfere with optimizations such as data de-duplication.</li>
-</ul>
+残念ながら、制約もあります。
 
-<p>Still, using cloud backup is a good way for enterprises to quickly start benefiting from the cloud.</p>
+- データリカバリの費用は高くなるかもしれません。したがって、滅多に必要としないデータだけをクラウドに移行したくなるかもしれません。
+- バックアップしたいデータは顧客のデータ、あるいは誰かの所有しているデータを含んでいることが多いため、暗号化するか、他の方法で保護する必要があります。これによって、データの重複を取り除くような最適化ができない可能性があります。
 
-<hr />
+しかしながら、クラウドによるバックアップは企業にとってクラウドの恩恵をすぐに受けることのできる良い方法です。
 
 ### 稼働状況: 災害時と通常時 (Operational State: Disaster vs. BAU)
 
 ![Separating by operational state](https://architectelevator.com/assets/img/hybrid_bau.png){: style="float:right;max-width:50%;padding-left:10px;padding-top:1em"}
 
-<p>Lastly, one can split workloads by the nature of the system’s operational state. The most apparent division in operational state is whether things are going well (“business as usual”) or whether the main compute resources are unavailable (“disaster”). While you or your regulator may have a strong preference for running systems on premises, when these systems have become unavailable, it may be better to have a running system at all, even if it’s located in the cloud.</p>
+システムの稼働状況によってワークロードを分割することもできます。わかりやすい稼働状況の区分は、物事が順調か(「通常」)、あるいは主なコンピュータリソースが稼働していないか(「災害」)です。システムをオンプレミスで動かすことを望んでいる、あるいは規制機関が望んでいるとしても、オンプレミス上のシステムが利用できなくなった場合に、全く利用できないより、クラウド上のシステムが利用できるほうが良いかもしれません。
 
-<p>This approach to slicing workload is slightly different from the others as the same code would run in both environments, but under different circumstances:</p>
+同じコードを両方の環境で動かす、しかし異なる状況においてという意味で、このワークロードの分割アプローチは他のアプローチと大きく異なっています。
 
-<ul>
-  <li>No workloads run in the cloud under normal operational conditions.</li>
-  <li>Cloud usage is temporary, making good use of the cloud’s elastic billing approach.</li>
-</ul>
+- 通常時にはクラウド上でワークロードは稼働しません
+- クラウドの利用は一時的なので、クラウドの柔軟な課金アプローチを活用しています
 
-<p>However, life isn’t quite that simple:</p>
+しかしながら、物事はそれほど単純ではありません。
 
-<ul>
-  <li>In order to run emergency operations from the cloud, you need to have your data synchronized into a location that’s both accessible from the cloud and unaffected by the outage scenario that you are planning for. More likely than not, that location may be the cloud, at which point you might consider running the system from the cloud in any case.</li>
-  <li>Using the cloud just for emergency situation deprives you of the benefits of operating in the cloud in the vast majority of the cases.</li>
-</ul>
+- 緊急時にクラウドで運用するためには、クラウドからアクセスでき、想定している停止シナリオの影響を受けない場所にデータを同期する必要があります。多くの場合、そのような場所はクラウドでしょう。そうなると、いつでもシステムをクラウドで運用することを考えかもしれません。
+- 緊急事態のためだけにクラウドを使うと、多くの場合クラウドで運用する利点が失われます。
 
-<p>So, this approach may be most suitable for compute tasks that don’t require a lot of data. For example, for an e-commerce site you could allow customers to place orders even if the main site is unavailable by picking from a (public) catalog and storing orders until the main system comes back up. It’ll like beat a cute 404 or 500 page.</p>
-
-<hr />
+つまり、このアプローチは大量のデータを必要としない計算タスクに最も適しています。例えば、メインサイトが利用できない時も顧客が注文可能なeコマースサイトです。これは、メインシステムが復旧するまで、(公開)カタログから選び注文を保存することによって可能です。可愛いらしい404、あるいは500ページよりは良いでしょう。
 
 ### ワークロードの需要: バーストと通常 (Workload Demand: Burst vs Normal Operations)
 
 ![Separating by workload demand](https://architectelevator.com/assets/img/hybrid_burst.png){: style="float:right;max-width:50%;padding-left:10px;padding-top:1em"}
 
-<p>Last, but not least, we may not have to conjure an outright emergency to occasionally shift some workloads into the cloud while keeping it on premise under normal circumstances. An approach that used to be frequently cited is bursting into the cloud, meaning you keep a fixed capacity on premises and temporarily extend into the cloud when additional capacity is needed.</p>
+大事なことを言い忘れていましたが、通常時はオンプレミスで実行しつつ、時々ワークロードをクラウドに移行するために完全な非常事態は必要ない場合もあります。かつて頻繁に引用されたアプローチはバーストをクラウドで実行する事です。つまり、オンプレミスの処理能力は固定で、それ以上の処理能力が必要になったら一時的にクラウドに拡張します。
 
-<p>Again, you gain some desirable benefits:</p>
+同様に、この選択肢にも利点があります。
 
-<ul>
-  <li>The cloud’s elastic billing model is ideal for this case as short bursts are going to be relatively cheap.</li>
-  <li>You retain the comfort of operating on premises for most of the time.</li>
-</ul>
+- クラウドの柔軟な課金モデルはこのアプローチに最適です。短時間のバーストは比較的安いです。
+- ほとんどの時間は、オンプレミス上で運用できます。
 
-<p>But there’s reasons that people don’t talk about this option quite as much anymore:</p>
+しかしながら、人々がこの選択肢についてもはや話さないのには理由があります。
 
-<ul>
-  <li>Again, you need access to data from the cloud instances . That means you either replicate the data to the cloud, which is likely what you tried to avoid in the first place, or your cloud instances need to operate on data that’s kept on premises, which likely implies major latency penalties.</li>
-  <li>You need to have an application architecture that can run on premises and in the cloud simultaneously under heavy load – not a small feat.</li>
-</ul>
+- 前と同じ話ですが、クラウドインスタンスからデータにアクセスする必要があります。つまり、クラウドにデータを複製することになりますが、これは一番避けたかったことのはずです。もしくは、クラウドインスタンスはオンプレミス上のデータを操作する必要があります。これは大きな遅延という対価を払う事になるでしょう。
+- 高負荷の状態でオンプレミスとクラウド上で同時に実行できるアプリケーションアーキテクチャが必要です。そしてそれは簡単な仕事ではありません。
 
-<p>This option likely works best for compute-intensive workloads, e.g. simulations. It’s also a great fit for one-time compute tasks where you rig up machinery in the cloud just for one time. For example, this worked very well for the <a href="https://www.nytimes.com/2018/11/10/reader-center/past-tense-photos-history-morgue.html" target="_blank">New York Times digitizing 6 million photos</a>  or for <a href="https://www.theverge.com/2019/3/14/18265358/pi-calculation-record-31-trillion-google" target="_blank">calculating <em>pi</em> to 31 trillion digits</a>.</p>
+この選択肢はシミュレーションのような計算中心のワークロードに最適です。また、クラウド上で急いで機械的に何かをするような一回限りの計算タスクにも向いています。例えば、このアプローチは[ニューヨークタイムズが600万枚の写真をデジタル化したり](https://www.nytimes.com/2018/11/10/reader-center/past-tense-photos-history-morgue.html)、[*円周率*を31兆桁まで計算したり](https://www.theverge.com/2019/3/14/18265358/pi-calculation-record-31-trillion-google)するのに最適でした。
 
 ## 実践してみよう
 
-<p>For most enterprises hybrid cloud is inevitable, so you better have a good plan for how to make the best use of it. Because there are quite a few options to slice your workloads across the cloud and your on-premises compute environments, cataloging these options helps you make well-thought-out and clearly communicated decisions. It also keeps you from wanting to proclaim that “one size fits all” – all aspects of being a better architect.</p>
+ほとんどの企業はハイブリッドクラウドを避けることができません。したがって、どのようにハイブリッドクラウドを最大限に活用するの良い計画が必要です。ワークロードをクラウドとオンプレミス環境に分割するための選択肢は多いため、これらの選択肢をカタログ化する事により、十分な検討と明確に伝える事のできる決定が可能になります。また、「一つのサイズで全てに対応できる」と宣言することを避けることができます。これらはより良いアーキテクトであるための考え方です。
 
-<p>Happy slicing and migrating!</p>
+楽しい分割と移行を!
 
-<!-- 
-What do the seams look like? 
- -->
+ps: もし、まだ知らないのであれば、[Simon Wardleyのハイブリッドクラウドに対する面白い見解](https://twitter.com/swardley/status/908031162668474368)を読んでみてください。
 
-<p>ps: if you haven’t seen it yet, have a look at  <a href="https://twitter.com/swardley/status/908031162668474368" target="_blank">Simon Wardley’s humorous take on hybrid cloud</a></p>
+*その他のクラウド戦略に関する見解*
 
-<p><em>More thoughts on cloud strategy:</em></p>
+- [ハイブリッドマルチクラウド: あるエレベーターアーキテクトの見解](/cloud/hybrid-multi-cloud/)
+- [自分で構築していないものを動かすな](https://architectelevator.com/cloud/dont-run-what-didnt-build/)
+- [「実行のための変動費用」が増えるのは良いことかもしれません](https://www.linkedin.com/pulse/can-increasing-your-run-budget-good-thing-gregor-hohpe/) [Linkedin]
+- [クラウドコンピューティングはインフラストラクチャのトピックではない](https://www.linkedin.com/pulse/cloud-infrastructure-topic-gregor-hohpe/) [Linkedin]
 
-<ul>
-  <li><a href="/cloud/hybrid-multi-cloud/">Multi-hybrid Cloud: An Elevator Architect’s View</a></li>
-  <li><a href="/cloud/dont-run-what-didnt-build/">Don’t run software you didn’t build</a></li>
-  <li><a href="https://www.linkedin.com/pulse/can-increasing-your-run-budget-good-thing-gregor-hohpe/">Increasing your “Run” budget may be a good thing</a> [Linkedin]</li>
-  <li><a href="https://www.linkedin.com/pulse/cloud-infrastructure-topic-gregor-hohpe/">Cloud computing isn’t an infrastructure topic</a> [LinkedIn]</li>
-</ul>
-
-<p><br /><em>NOTE: As a devout vegetarian, I certify that no elephants were harmed in the production of this article nor any related cloud migrations.</em></p>
+*注: この記事の執筆や関連するクラウド移行によって象に被害がなかったことを証明します。*
