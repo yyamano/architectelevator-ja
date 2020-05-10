@@ -1,3 +1,7 @@
+# About the repository
+
+This is a Japanese translation of Gregor Hohpe's [Architect Elevator Blog](https://architectelevator.com/). It is published at https://yyamano.github.io/architectelevator-ja/ with [GitHub Pages](https://pages.github.com/).
+
 # Installation
 
 ## Requirements
