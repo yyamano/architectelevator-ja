@@ -56,6 +56,11 @@ original:
 * branch strategy
 * more explanation for the future me
 * variables like original.something
+* how to validate?
+  * HTML
+  * https://search.google.com/structured-data/testing-tool/u/0/
+* Replace link to the original article with JP translation
+  * Sync title.
 
 # Directory hierarchy
 
