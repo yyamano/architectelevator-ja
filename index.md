@@ -1,7 +1,7 @@
 ---
 layout: articles
 ---
-# このサイトについて
+# Architect Elevator Blog日本語版について
 
 ここは、[Gregor Hohpe](https://twitter.com/ghohpe)の[Architect Elevator Blog](https://architectelevator.com/blog/)の日本語訳サイトです。本人の許可を得て公開しています。
 
