@@ -222,7 +222,7 @@ ps: もし、まだ知らないのであれば、[Simon Wardleyのハイブリ�
 *その他のクラウド戦略に関する見解*
 
 - [ハイブリッドマルチクラウド: あるエレベーターアーキテクトの見解](/cloud/hybrid-multi-cloud/)
-- [自分達が構築していないものを動かすな](https://architectelevator.com/cloud/dont-run-what-didnt-build/)
+- [自分達で構築していないものを動かすな](https://architectelevator.com/cloud/dont-run-what-didnt-build/)
 - [「実行のための変動費用」が増えるのは良いことかもしれません](https://www.linkedin.com/pulse/can-increasing-your-run-budget-good-thing-gregor-hohpe/) [Linkedin]
 - [クラウドコンピューティングはインフラストラクチャのトピックではない](https://www.linkedin.com/pulse/cloud-infrastructure-topic-gregor-hohpe/) [Linkedin]
 
