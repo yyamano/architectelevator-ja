@@ -1,0 +1,937 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Slicing the hybrid cloud elephant - The Architect Elevator</title>
+<meta name="description" content="Enterprises can’t avoid hybrid cloud. Here are eight ways to get there.">
+
+
+  <meta name="author" content="Gregor Hohpe">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="The Architect Elevator">
+<meta property="og:title" content="Slicing the hybrid cloud elephant">
+<meta property="og:url" content="https://architectelevator.com/cloud/hybrid-cloud/">
+
+
+  <meta property="og:description" content="Enterprises can’t avoid hybrid cloud. Here are eight ways to get there.">
+
+
+
+  <meta property="og:image" content="https://architectelevator.com/assets/img/cloud_elephant_banner.jpg">
+
+
+
+  <meta name="twitter:site" content="@ghohpe">
+  <meta name="twitter:title" content="Slicing the hybrid cloud elephant">
+  <meta name="twitter:description" content="Enterprises can’t avoid hybrid cloud. Here are eight ways to get there.">
+  <meta name="twitter:url" content="https://architectelevator.com/cloud/hybrid-cloud/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://architectelevator.com/assets/img/cloud_elephant_banner.jpg">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2019-09-24T12:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://architectelevator.com/cloud/hybrid-cloud/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Gregor Hohpe",
+      "url": "https://architectelevator.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="The Architect Elevator Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--blog">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          The Architect Elevator
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog" >Blog</a>
+            </li><li class="masthead__menu-item">
+              <a href="/book" >Books</a>
+            </li><li class="masthead__menu-item">
+              <a href="/workshops" >Workshops</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about" >About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/img/cloud_elephant_banner.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Slicing the hybrid cloud elephant
+
+        
+      </h1>
+      
+        <p class="page__lead">Enterprises can’t avoid hybrid cloud. Here are eight ways to get there.
+</p>
+      
+      
+      
+      
+    </div>
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        
+        <a href="https://linkedin.com/in/ghohpe">
+          <img src="/assets/img/gregor.jpg" alt="Gregor Hohpe" itemprop="image">
+        </a>
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <a href="https://linkedin.com/in/ghohpe"><h3 class="author__name" itemprop="name">Gregor Hohpe</h3></a>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I help enterprises with their architecture strategy and cloud transformation journey by connecting the penthouse with the engine room. Ex-Google, Allianz, ThoughtWorks, Deloitte.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Singapore</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://architectelevator.com/feed.xml" rel="nofollow noopener noreferrer"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+          
+        
+          
+            <li><a href="https://twitter.com/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+          
+        
+          
+            <li><a href="https://linkedin.com/in/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Slicing the hybrid cloud elephant">
+    <meta itemprop="description" content="Enterprises can’t avoid hybrid cloud. Here are eight ways to get there.">
+    <meta itemprop="datePublished" content="September 24, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> </h4></header>
+              <ul class="toc__menu">
+  <li><a href="#two-isolated-environments-dont-make-a-hybrid">Two isolated environments don’t make a hybrid</a></li>
+  <li><a href="#hybrid-splits---31-flavors">Hybrid splits - 31 flavors?</a></li>
+  <li><a href="#ways-to-slice-the-cloud-elephant">Ways to Slice the Cloud Elephant</a>
+    <ul>
+      <li><a href="#tier-front-vs-back">Tier: Front vs. Back</a></li>
+      <li><a href="#generation-new-vs-old">Generation: New vs. Old</a></li>
+      <li><a href="#criticality-non-critical-vs-critical">Criticality: Non-critical vs. Critical</a></li>
+      <li><a href="#lifecycle-development-vs-production">Lifecycle: Development vs. Production</a></li>
+      <li><a href="#data-classification-non-sensitive-vs-sensitive">Data Classification: Non-sensitive vs. Sensitive</a></li>
+      <li><a href="#data-freshness-back-up-vs-operational">Data Freshness: Back-up vs. Operational</a></li>
+      <li><a href="#operational-state-disaster-vs-bau">Operational State: Disaster vs. BAU</a></li>
+      <li><a href="#workload-demand-burst-vs-normal-operations">Workload Demand: Burst vs Normal Operations</a></li>
+    </ul>
+  </li>
+  <li><a href="#putting-it-into-practice">Putting it into Practice</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+
+       
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-09-24T12:00:00+09:00">September 24, 2019</time></p>
+        
+
+        
+<div style="max-width:100%;padding: 6px;border: 1px;border-style: solid; border-color: seagreen;overflow:auto;">
+
+<a href="/book/cloudstrategy"><img src="/assets/img/CloudStrategy_Cover_Medium.jpg" alt="Cloud Strategy Book Cover" style="float:left;padding-right:15px;max-width:150px"></a>
+
+<p>An expanded version of this blog post is now available in my latest <a href="/book/cloudstrategy">e-book on Cloud Strategy</a>, along with 23 other real-life insights on successfully moving to the cloud.</p>
+
+</div>
+
+
+        <p>Simple, but evocative decision models help Elevator Architects make better, and more conscious decisions. Hybrid cloud is a great test case for this.</p>
+
+<p>As I explained in my <a href="/cloud/hybrid-multi-cloud/">previous post on Hybrid-multi Cloud</a>, hybrid clouds are a given in any enterprise cloud scenario, at least as a transitional state.  The reason is simple: you’re not going to find all your workloads magically removed from your data center one day - some applications will already be in the cloud while others are still on premise. And more likely than not, those two pieces will need to interact.</p>
+
+<p>So, <em>hybrid</em> has some justification as a buzzword. Still, it can greatly benefit from applying architectural thinking to is. Let’s start with the definition from last time:</p>
+
+<blockquote>
+  <p><em>Hybrid cloud</em> architectures split workloads across the cloud and on-premises environments. Generally, these workloads interact to do something useful.</p>
+</blockquote>
+
+<p><img src="/assets/img/hybrid_multi.png" alt="Hybrid and multi" style="margin-left: auto;margin-right: auto;display: block;" /></p>
+
+<p>I find simple definitions most useful because we already have to deal with enough complexity when trying to define a sound cloud computing strategy. Simple definitions not only make concepts and decisions accessible to a wide audience, they can also highlight what something is used for instead of focusing on what it’s made from (it may be a pattern author’s natural tendency to focus on  <em>intent</em> as opposed to structure).</p>
+
+<p>Alas, defining something is merely a first step – we’ll need to evolve it into something concrete so that it becomes actionable. For that, we take the <em>Architect Elevator</em> a few floors down to understand some important nuances and catalog them.</p>
+
+<h2 id="two-isolated-environments-dont-make-a-hybrid">Two isolated environments don’t make a hybrid</h2>
+
+<p>Having some workloads in the cloud while others remain on our premises sadly means that you have just added yet another computing environment to your existing portfolio. I haven’t met a CIO who’s looking for more complexity in his or her shop, so this doesn’t sounds like a great plan.</p>
+
+<blockquote>
+  <p>I haven’t met a CIO who’s looking for more complexity. So, don’t make your cloud yet-another-data center.</p>
+</blockquote>
+
+<p>Therefore, unified management across the environment is essential to call something hybrid. Think of it in analogy to a hybrid car: The difficult part in making a hybrid car wasn’t to stick a battery and an electric motor into a petrol-powered car. Getting the two systems to work in a seamless and harmonious way were tricky, and that’s what made the Toyota Prius a <em>hybrid</em>.</p>
+
+<p>So, we’ll amend our definition:</p>
+
+<blockquote>
+  <p><em>Hybrid cloud</em> architectures split workloads across the cloud and on-premises environments. Generally, these workloads interact to do something useful. Both environments are managed in a unified way.</p>
+</blockquote>
+
+<p><img src="/assets/img/hybrid.png" alt="Hybrid Cloud" style="margin-left: auto;margin-right: auto;display: block;" /></p>
+
+<p>Uniform management across diverse environments isn’t easy, but can be approached in several ways:</p>
+
+<ul>
+  <li>Mimicking the cloud environment on premises, e.g. via <a href="https://aws.amazon.com/outposts/" target="_blank">AWS Outposts</a> or <a href="https://azure.microsoft.com/en-in/overview/azure-stack/" target="_blank">Azure Stack</a>.</li>
+  <li>Replicating your existing on-premise environment in the cloud, e.g. with <a href="https://cloud.vmware.com/vmc-aws" target="_blank">VMWare Cloud</a>.</li>
+  <li>Stretching a uniform run-time and management layer across both environments, e.g. with containers, Kubernetes, and a management layer like Google Anthos.</li>
+  <li>Making cloud data easily available from on-premises environments via <a href="https://aws.amazon.com/storagegateway/features/?nc=sn&amp;loc=2&amp;dn=1" target="_blank">AWS Storage Gateway</a> or various storage replication solutions like NetApp SnapMirror.</li>
+  <li>Integrating identity and access management, e.g. by integrating cloud accounts with Active Directory.</li>
+</ul>
+
+<p>Come to think of it, there’s plenty enough material just in those decisions to justify a separate post. So, let’s park this for a moment and go back to the fundamental decision of hybrid cloud: what goes out and what stay in?</p>
+
+<h2 id="hybrid-splits---31-flavors">Hybrid splits - 31 flavors?</h2>
+
+<p>The key architectural decision of hybrid cloud is how to split your workloads, i.e. which parts of your IT landscape to move into the cloud and which parts to keep on premises. This decision is closely related to the notion of finding <em>seams</em> in an IT system, first described (to my knowledge) by Mike Feathers in his classic book <a href="http://www.informit.com/articles/article.aspx?p=359417&amp;seqNum=3" target="_blank">Working Effectively with Legacy Code</a>. Seams are those places where a split doesn’t cross too many dependencies and doesn’t cause run-time problems, for example performance degradation.</p>
+
+<p>I don’t think I’ll be able to quite come up with 31 ways to split workloads, so I apologize for the click-baity title. Still, I want to attempt to catalog as many of them as I can. It’ll be helpful in multiple ways:</p>
+<ul>
+  <li>A common vocabulary gives decision transparency because it’s easy to communicate which option(s) you chose and why.</li>
+  <li>The list also allows you to check whether you might have overlooked some options. Especially in environments where regulatory concerns and data residency requirements still limit some cloud migrations, a handy playbook allows you to check whether you exhausted all possible options of moving things to the cloud.</li>
+  <li>Lastly, having a clear set of options makes it easier to consider applicability, pros, and cons of each option in a consistent way. It’ll also tell you what to watch out for when selecting a specific option.</li>
+</ul>
+
+<h2 id="ways-to-slice-the-cloud-elephant">Ways to Slice the Cloud Elephant</h2>
+
+<p>I could think of at least eight common ways that enterprises split their workloads across their hybrid environments. You may have even seen more:</p>
+
+<p><img src="/assets/img/hybrid_splits.png" alt="Ways to split hybrid cloud" /></p>
+
+<p>This list’s main purpose isn’t as much to find new options that no one has ever thought of. It’s much rather a collection of well-known options that makes for a useful sanity check. Let’s have a look at each approach in a bit more detail.</p>
+
+<h3 id="tier-front-vs-back">Tier: Front vs. Back</h3>
+
+<p><img src="/assets/img/hybrid_tier.png" alt="Separating by tier" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>Moving customer or ecosystem-facing components, aka “front-end systems” / “systems of engagement” to the cloud while keeping back-end systems is a common strategy. While you <a href="/transformation/shifting_gears_clutch/#2-speed-it-burns-the-clutch">won’t see me celebrating two-speed architectures</a>, multiple factors make this approach a natural fit:</p>
+
+<ul>
+  <li>Front-end components are exposed to the internet, so routing traffic straight from the internet to the cloud reduces latency and eases traffic congestion on your corporate network.</li>
+  <li>The wild traffic swings commonly experienced by front-end components make elastic scaling particularly valuable.</li>
+  <li>Front-end systems are more likely to be developed using modern tool chains and architectures, which make them well suited for the cloud.</li>
+  <li>Front-end systems are less likely to store personally identifiable or confidential information because that data is usually passed through to back-ends. In environments where enterprise policies restrict such data from being stored in the cloud, front-end systems are good candidates for moving to the cloud.</li>
+</ul>
+
+<p>Besides these natural advantages, architecture wouldn’t be this interesting if there weren’t some things to watch out for:</p>
+
+<ul>
+  <li>Even if the front-end takes advantage of elastic scaling, most back-ends won’t be able to absorb the corresponding load spikes. So, unless you employ caching or queuing or can move computationally expensive tasks to the cloud, you may not improve the scalability of your end-to-end application.</li>
+  <li>Similarly, if your application suffers from reliability issues, moving just one half to the cloud is unlikely to make those go away.</li>
+  <li>Many front-ends are “chatty” when communicating with back-end systems or specifically databases because they were built for environments where the two sit very close to each other. One front-end request can issue dozens or sometimes hundreds of requests to the back-end. Splitting such a chatty channel between cloud and on-premises is likely to increase end-user latency.</li>
+</ul>
+
+<p>As the excitement of “two speed IT” wore off, this approach can still be a good intermediary step. Just don’t confuse it for a long-term strategy.</p>
+
+<hr />
+
+<h3 id="generation-new-vs-old">Generation: New vs. Old</h3>
+
+<p><img src="/assets/img/hybrid_generation.png" alt="Separating by generation" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>Closely related is the split by <em>new</em> vs. <em>old</em>. As explained above, newer systems are more likely to feel at home in the cloud because they are generally designed to be scalable and independently deployable. They’re also usually smaller, making them deserving of the label <em>cloud native</em>, even though it’s not my favorite term as it appears to prohibit cloud (im)migration.</p>
+
+<p>Again, several reasons speak for this type of split:</p>
+
+<ul>
+  <li>Modern components are more likely to use modern tool chains and architectures, such as micro-services, continuous integration (CI), automated tests and deployment, etc. Hence they can take better advantage of cloud offerings.</li>
+  <li>Modern components are more likely to run in containers and can thus utilize higher-level cloud services like managed Kubernetes or serverless environments.</li>
+  <li>Modern components are more likely to be well-understood and tested, reducing the migration risk.</li>
+</ul>
+
+<p>Again, there are a few things to consider:</p>
+
+<ul>
+  <li>Splitting by <em>new</em> vs <em>old</em> may not align well with the existing systems architecture, meaning it isn’t hitting a good <em>seam</em>. For example, splitting highly cohesive components across data center boundaries will likely result in poor performance.</li>
+  <li>Unless you are in the process of replacing all components over time, this strategy doesn’t lead to a “100% in the cloud” outcome.</li>
+</ul>
+
+<p>Overall this is a good approach if you are developing new systems - ultimately <em>new</em> will replace <em>old</em>.</p>
+
+<hr />
+
+<h3 id="criticality-non-critical-vs-critical">Criticality: Non-critical vs. Critical</h3>
+
+<p><img src="/assets/img/hybrid_criticality.png" alt="Separating by criticality" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>Many enterprises prefer to first dip their toe into the cloud water before going all out. They are likely to try the cloud with a few simple applications that can accommodate the initial learning curve and the inevitable mistakes. “Failing fast” and learning along the way makes sense:</p>
+
+<ul>
+  <li>Skill set availability is one of the main inhibitors of moving to the cloud - stuff is never as easy as shown in the vendor demos. Therefore, starting small and getting rapid feedback builds much needed skills in a low-risk environment.</li>
+  <li>Smaller applications benefit from the cloud self-service approach because it reduces or eliminates the fixed overhead common in on-premise IT.</li>
+  <li>Small applications also give you timely feedback and allow you to calibrate your expectations.</li>
+</ul>
+
+<p>While moving non-critical applications out to the cloud is a good start, it also has some limitations:</p>
+
+<ul>
+  <li>Cloud providers generally offer <em>better</em> uptime and security than on-premises environments, so you’ll likely gain more by moving <em>critical</em> workloads.</li>
+  <li>While you can learn a lot from moving simple applications, they may not have the same security, up-time, and scalability requirements as subsequent workloads. You therefore need to be cautious to not under-estimate the effort of a full migration.</li>
+</ul>
+
+<p>Overall it’s a good “tip your toe into the water” strategy that certainly beats a “let’s wait until all this settles” approach.</p>
+
+<hr />
+
+<h3 id="lifecycle-development-vs-production">Lifecycle: Development vs. Production</h3>
+
+<p><img src="/assets/img/hybrid_lifecycle.png" alt="Separating by lifecycle" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>There are many ways to slice the proverbial elephant (eggplant for vegetarians like me). Rather than just considering splits across run-time components, a whole different approach is to split by application lifecycle. For example, you can run your tool chain, test, and staging environments in the cloud while keeping production on premises, e.g. due to regulatory constraints.</p>
+
+<p>Shifting build and test environments into the cloud is a good idea for several reasons:</p>
+
+<ul>
+  <li>Build and test environments rarely contain real customer data, so most concerns around data privacy and locality don’t apply.</li>
+  <li>Development, test, and build environments are temporary in nature, so being able to set them up when needed and tearing them back down leverages the elasticity of the cloud and can cut infrastructure costs by a factor of 3 or more: the core working hours make up less than a third of 168 hours in a week. Functional test environments may even have shorter duty cycles, depending on how quickly they can spin up.</li>
+  <li>Many build systems are failure tolerant, so you can shave off even more Dollars by using <em><a href="https://cloud.google.com/preemptible-vms/" target="_blank">preemptible</a></em> / <em><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html" target="_blank">spot</a></em> compute instances.</li>
+</ul>
+
+<p>You might have guessed that architecture is the business of trade-offs, so once again we have a few things to watch out for:</p>
+
+<ul>
+  <li>Splitting your software lifecycle across cloud and on-premises results in a test environment that’s different from production. This is risky as you might not detect performance bottlenecks or subtle differences that can cause bugs to surface only in production.</li>
+  <li>If your build chain generates large artifacts you may face delays or egress charges when deploying those to your premises.</li>
+</ul>
+
+<p>This option may be most popular for development teams that are restrained from running production workloads in the cloud but still want to take as much advantage of it as possible.</p>
+
+<hr />
+
+<h3 id="data-classification-non-sensitive-vs-sensitive">Data Classification: Non-sensitive vs. Sensitive</h3>
+
+<p><img src="/assets/img/hybrid_classification.png" alt="Separating by data classification" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>The compute aspect of hybrid cloud is comparatively simple because code can easily be re-deployed into different environments. Data is a different story: data largely resides in one place and needs to be migrated or synchronized if it’s meant to go somewhere else. If you move your compute and keep the data on premises, you’ll likely incur a heavy performance penalty. Therefore, it’s the data that often prevents the move to the cloud.</p>
+
+<p>As data classification can be the hurdle for moving apps to the cloud, a natural split would be to move non-sensitive data to the cloud while keeping sensitive data on premises. Doing so has some distinct advantages:</p>
+
+<ul>
+  <li>It complies with common internal regulations related to data residency as sensitive data will remain on your promises and isn’t replicated into other regions.</li>
+  <li>It limits your exposure in case of a possible cloud data breach.</li>
+</ul>
+
+<p>However, the approach is rooted in assumptions that don’t necessarily hold true for today’s computing environments:</p>
+
+<ul>
+  <li>Protecting on premises environments from sophisticated attacks and low-level exploits has become a difficult proposition. For example, CPU-level exploits like <a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)" target="_blank">Spectre</a> and <a href="https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)" target="_blank">Meltdown</a> were corrected by some cloud providers before they were announced - something that couldn’t be done on premises.</li>
+  <li>Malicious data access and exploits don’t always access data directly but often go through many “hops”. Having some systems in the cloud while your sensitive data remains on premises doesn’t automatically mean your data is secure. For example, one of the biggest data breaches, the <a href="https://en.wikipedia.org/wiki/Equifax#May%E2%80%93July_2017_data_breach" target="_blank">Equifax Data Breach</a> that affected up to 145 million customer records had data stored on premises.</li>
+</ul>
+
+<p>Hence, while this approach may be suitable to getting started in face of regulatory or policy constraints, use it with caution as a long-term strategy.</p>
+
+<hr />
+
+<h3 id="data-freshness-back-up-vs-operational">Data Freshness: Back-up vs. Operational</h3>
+
+<p><img src="/assets/img/hybrid_freshness.png" alt="Separating by data freshness" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>Not all your data is accessed by applications all the time. In fact, in many enterprises a vast majority of data is “cold”, meaning it’s accessed rarely. That’s the case for example for historical records or back-ups. Cloud providers offer appealing options for data that’s rarely accessed. <a href="https://aws.amazon.com/glacier/" target="_blank">Amazon’s Glacier</a> was one of the earliest offerings to specifically target that use case while other providers have special tiers for their storage service, e.g. <a href="https://azure.microsoft.com/en-us/services/storage/archive/" target="_blank">Azure Storage Archive Tier</a> and <a href="https://cloud.google.com/storage/docs/storage-classes" target="_blank">GCP Coldline Cloud Storage </a>.</p>
+
+<p>Archiving data in the cloud makes good sense:</p>
+
+<ul>
+  <li>Backing up and restoring data usually occurs separate from regular operations, so it allows you to take advantage of the cloud without having to migrate or re-architect applications.</li>
+  <li>For older applications, data storage cost can make up a significant percentage of the overall operational costs, so moving some of this to the cloud can give you instant cost savings.</li>
+  <li>For archiving purposes, it’s good to have data in a location separate from your usual data center.</li>
+</ul>
+
+<p>Alas, it also has limitations:</p>
+<ul>
+  <li>Data recovery costs can be high, so you’d only want to move data that you rarely need.</li>
+  <li>The data you’d want to back up likely contains customer or other proprietary data, so you might need to encrypt or otherwise protect that data, which can interfere with optimizations such as data de-duplication.</li>
+</ul>
+
+<p>Still, using cloud backup is a good way for enterprises to quickly start benefiting from the cloud.</p>
+
+<hr />
+
+<h3 id="operational-state-disaster-vs-bau">Operational State: Disaster vs. BAU</h3>
+
+<p><img src="/assets/img/hybrid_bau.png" alt="Separating by operational state" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>Lastly, one can split workloads by the nature of the system’s operational state. The most apparent division in operational state is whether things are going well (“business as usual”) or whether the main compute resources are unavailable (“disaster”). While you or your regulator may have a strong preference for running systems on premises, when these systems have become unavailable, it may be better to have a running system at all, even if it’s located in the cloud.</p>
+
+<p>This approach to slicing workload is slightly different from the others as the same code would run in both environments, but under different circumstances:</p>
+
+<ul>
+  <li>No workloads run in the cloud under normal operational conditions.</li>
+  <li>Cloud usage is temporary, making good use of the cloud’s elastic billing approach.</li>
+</ul>
+
+<p>However, life isn’t quite that simple:</p>
+
+<ul>
+  <li>In order to run emergency operations from the cloud, you need to have your data synchronized into a location that’s both accessible from the cloud and unaffected by the outage scenario that you are planning for. More likely than not, that location may be the cloud, at which point you might consider running the system from the cloud in any case.</li>
+  <li>Using the cloud just for emergency situation deprives you of the benefits of operating in the cloud in the vast majority of the cases.</li>
+</ul>
+
+<p>So, this approach may be most suitable for compute tasks that don’t require a lot of data. For example, for an e-commerce site you could allow customers to place orders even if the main site is unavailable by picking from a (public) catalog and storing orders until the main system comes back up. It’ll like beat a cute 404 or 500 page.</p>
+
+<hr />
+
+<h3 id="workload-demand-burst-vs-normal-operations">Workload Demand: Burst vs Normal Operations</h3>
+
+<p><img src="/assets/img/hybrid_burst.png" alt="Separating by workload demand" style="float:right;max-width:50%;padding-left:10px;padding-top:1em" /></p>
+
+<p>Last, but not least, we may not have to conjure an outright emergency to occasionally shift some workloads into the cloud while keeping it on premise under normal circumstances. An approach that used to be frequently cited is bursting into the cloud, meaning you keep a fixed capacity on premises and temporarily extend into the cloud when additional capacity is needed.</p>
+
+<p>Again, you gain some desirable benefits:</p>
+
+<ul>
+  <li>The cloud’s elastic billing model is ideal for this case as short bursts are going to be relatively cheap.</li>
+  <li>You retain the comfort of operating on premises for most of the time.</li>
+</ul>
+
+<p>But there’s reasons that people don’t talk about this option quite as much anymore:</p>
+
+<ul>
+  <li>Again, you need access to data from the cloud instances . That means you either replicate the data to the cloud, which is likely what you tried to avoid in the first place, or your cloud instances need to operate on data that’s kept on premises, which likely implies major latency penalties.</li>
+  <li>You need to have an application architecture that can run on premises and in the cloud simultaneously under heavy load – not a small feat.</li>
+</ul>
+
+<p>This option likely works best for compute-intensive workloads, e.g. simulations. It’s also a great fit for one-time compute tasks where you rig up machinery in the cloud just for one time. For example, this worked very well for the <a href="https://www.nytimes.com/2018/11/10/reader-center/past-tense-photos-history-morgue.html" target="_blank">New York Times digitizing 6 million photos</a>  or for <a href="https://www.theverge.com/2019/3/14/18265358/pi-calculation-record-31-trillion-google" target="_blank">calculating <em>pi</em> to 31 trillion digits</a>.</p>
+
+<h2 id="putting-it-into-practice">Putting it into Practice</h2>
+
+<p>For most enterprises hybrid cloud is inevitable, so you better have a good plan for how to make the best use of it. Because there are quite a few options to slice your workloads across the cloud and your on-premises compute environments, cataloging these options helps you make well-thought-out and clearly communicated decisions. It also keeps you from wanting to proclaim that “one size fits all” – all aspects of being a better architect.</p>
+
+<p>Happy slicing and migrating!</p>
+
+<!-- 
+What do the seams look like? 
+ -->
+
+<p>ps: if you haven’t seen it yet, have a look at  <a href="https://twitter.com/swardley/status/908031162668474368" target="_blank">Simon Wardley’s humorous take on hybrid cloud</a></p>
+
+<p><em>More thoughts on cloud strategy:</em></p>
+
+<ul>
+  <li><a href="/cloud/hybrid-multi-cloud/">Multi-hybrid Cloud: An Elevator Architect’s View</a></li>
+  <li><a href="/cloud/dont-run-what-didnt-build/">Don’t run software you didn’t build</a></li>
+  <li><a href="https://www.linkedin.com/pulse/can-increasing-your-run-budget-good-thing-gregor-hohpe/">Increasing your “Run” budget may be a good thing</a> [Linkedin]</li>
+  <li><a href="https://www.linkedin.com/pulse/cloud-infrastructure-topic-gregor-hohpe/">Cloud computing isn’t an infrastructure topic</a> [LinkedIn]</li>
+</ul>
+
+<p><br /><em>NOTE: As a devout vegetarian, I certify that no elephants were harmed in the production of this article nor any related cloud migrations.</em></p>
+
+
+        
+      </section>
+
+      <section class="page__share">
+
+  <span class="page__share-title" style="padding-right: 10px;font-weight: bold;">Share on:</span>
+
+  <a href="https://twitter.com/intent/tweet?via=ghohpe&text=Slicing+the+hybrid+cloud+elephant%20https%3A%2F%2Farchitectelevator.com%2Fcloud%2Fhybrid-cloud%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Farchitectelevator.com%2Fcloud%2Fhybrid-cloud%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Farchitectelevator.com%2Fcloud%2Fhybrid-cloud%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+	    <section class="page__content">
+	    <h3 class="archive__subtitle">Learn 37 More Things About IT Transformation</h3>
+
+<div style="max-width:100%;padding-top: 1em">
+
+<a href="https://leanpub.com/37things" target="_blank" onclick="outbound('https://leanpub.com/37things'); return false;"><img src="/assets/img/37things_medium.jpg" alt="37 Things" style="float:left;padding-right:15px;max-width:220px"></a>
+
+<p>You can find more real-life stories in my book <i>37 Things One Architect Knows About IT Transformation</i>:</p>
+
+<ul style="overflow: hidden;">
+  <li><a href="https://leanpub.com/37things" target="_blank" onclick="outbound('https://leanpub.com/37things'); return false;">DRM-free E-Book</a> with money-back guarantee</li>
+  <li>Hard copy via <a href="https://www.amazon.com/gp/product/1537082981/ref=as_li_tl?ie=UTF8&amp;tag=enterpriseint-20&amp;camp=1789&amp;creative=9325&amp;linkCode=as2&amp;creativeASIN=1537082981&amp;linkId=3edef6b676064876a560f8d607fdc3d4" target="_blank">Amazon US</a>,  <a href="https://www.amazon.co.uk/Things-Architect-Knows-About-Transformation/dp/1537082981" target="_blank">Amazon UK</a>, <a href="http://www.amazon.de/Things-Architect-Knows-About-Transformation/dp/1537082981" target="_blank">Amazon Europe</a></li>
+</ul>
+
+</div>
+		</section>
+	  	  
+
+      <footer class="page__meta">
+ 
+      </footer>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/important_decisions_teaser.jpg"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/architecture/important-decisions/" rel="permalink">Your most important architecture decisions might be the ones you didn't know you made.
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2020-01-06T12:00:00+09:00">Jan 06, 2020</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">Conscious decision making is a major step towards better architecture.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/enterprise_non_cloud_teaser.png"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/cloud/enterprise-non-cloud/" rel="permalink">Don't build an enterprise non-cloud!
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2019-12-12T12:00:00+09:00">Dec 12, 2019</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">When making cloud enterprise ready, be careful not to throw the cloud baby out with the enterprise bathwater.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/fruit_basket_teaser.jpg"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/architecture/platforms-fruit-salad/" rel="permalink">Is your platform a Fruit Basket or Fruit Salad?
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2019-12-05T12:00:00+09:00">Dec 05, 2019</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">Good platforms are like fruit salads. But some people will want to pick out just their favorite fruit.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/coin_flip_teaser.jpg"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/transformation/it-decisions/" rel="permalink">Are IT's biggest decisions its worst?
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2019-10-17T12:00:00+09:00">Oct 17, 2019</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">More steering committees don’t necessarily lead to better decisions.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <script type="text/javascript" src="/assets/js/outbound.js"></script>	
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+	
+	<li>&nbsp;</li>
+	<li><strong>CONTACT:</strong></li>
+	
+    
+      
+        
+          <li><a href="https://linkedin.com/in/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+    
+
+	<li><i class="fas fa-envelope" aria-hidden="true"></i>
+	<script type="text/javascript" src="/assets/js/mail.js"></script>	
+	</li>
+	
+
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Gregor Hohpe. All opinions my own.
+
+</div>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+  <script>
+  window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+  ga('create','UA-131526375-1','auto');
+  ga('set', 'anonymizeIp', false);
+  ga('send','pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
