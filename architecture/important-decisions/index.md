@@ -27,19 +27,22 @@ original:
 
 ## 重要な決定はすでに行われています
 
-<p>Coming back to the discussion about selecting tools for a development platform, it occurred to me that selecting the products wasn’t the team’s  biggest decision because they had already made the main decision. They had decided to select the best tool for each component they needed. Alternatively, they could have selected a suite of  tools that could be best integrated into the overall platform.</p>
+開発プラットフォーム用のツールの選定に話も戻しましょう。
 
-<p>The team had decided to follow the former approach, perhaps without giving it too much consideration - after all, you’d want the best tools, right? The alternative route, while not selecting the strongest tool for each individual function, could make the best overall solution. So it’s a non-trivial decision because both options are reasonable choices.</p>
+製品の選定はチームの最大の決定ではありませんでした。チームはすでに大きな判断を行なっていたからです。必要なコンポーネントごとに最高のツールを選択することを決定していました。かわりに、プラットフォーム全体にうまく統合できるツール群を選択できたかもしれないのに。
 
-<p>Both options also have ramifications. For example, choosing the “best of breed” approach likely means that their platform looks more like a <a href="/architecture/platforms-fruit-salad/">fruit basket than fruit salad</a>.</p>
+チームは前者のアプローチを取ることを決断しました。おそらく、あまり深く考えずに。結局のところ、最高のツールが欲しいわけですよね? それぞれの機能ごとに一番優れたツールを選ばないという別の道を選んだとしても、全体最適なソリューションを得ることはできます。どちらの選択も合理的なので、これは重要な決定です。
 
-<p><a href="/transformation/it-decisions/">IT’s challenges with decision making</a> is something I commented on before. Making management aware of decision trade-offs is important, so you need to be conscious of the decisions you are making in the first place.</p>
+また、どちらのオプションにも問題があります。例えば、最高の組み合わせアプローチの選択は、プラットフォームが[フルーツサラダではなくフルーツバスケット](https://architectelevator.com/architecture/platforms-fruit-salad/)のように見えることを意味します。
+
+以前、[意思決定に関するITの課題](https://architectelevator.com/transformation/it-decisions/)について書いたように、意思決定のトレードオフを経営層に認識させることは重要です。したがって、そもそも自分が行おうとして入る意思決定に意識的になる必要があります。
 
 ## 思い込みに気をつけて
 
-<p>Unconscious decisions often come in the form of assumptions. Assumptions are risky because they lead to non-requirements, those requirements that exist but weren’t documented anywhere. Tacit assumptions and unconscious decisions both lead to missed expectations or surprises down the road.</p>
+無意識の決定は多くの場合、思い込みの形をとって現れます。思い込みは危険です。存在するがどこにもドキュメント化されていない要求、つまり要求でないものを導きます。暗黙の仮定と無意識の決定の両方により、期待を裏切り、後で驚くことになります。
 
-<p>The best way to catch yourself when making such assumptions is to take a step back and zoom out to see the bigger picture. Let’s say you’re in a store buying a sweater and are deciding between one for $100 and a nicer one for $150. Taking a step back, you realize that you already decided to buy a sweater, the place where to buy it, and the price range. Perhaps you are also favoring a specific brand. Starting a comparison matrix between these two sweaters is as meaningless as most score cards in IT that represent the end of a long decision tree, with most considerations made along the way lost. If you feel cold outside, perhaps a scarf would also do instead of a warmer sweater.</p>
+そのような思い込みに気がつく最善の方法は、一歩下がり、ズームアウトして全体を眺めることです。
+セータを買うためにお店におり、100ドルのセータとより良い150ドルのセータのどちらを買うか悩んでいるとしましょう。一歩下がってみると、すでにすでにセータを買うこと、買う場所、そして価格帯を決めていることに気がつきます。多分、好みのブランドもあるでしょう。二つのセータの比較表を作るのは無意味です。長い意思決定ツリーの結論を表現するITにおけるスコアカードには途中で行われたほとんどの検討事項が書かれていないのと同様です。外が寒いと感じるのであれば、暖かいセータの代わりにスカーフでも良かったかもしれません。
 
 ## 意識的な意思決定
 
