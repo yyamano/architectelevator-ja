@@ -54,6 +54,7 @@ original:
 ## TODO
 
 * branch strategy
+  * develop branch is periodically rebased.
 * more explanation for the future me
 * variables like original.something
 * how to validate?
