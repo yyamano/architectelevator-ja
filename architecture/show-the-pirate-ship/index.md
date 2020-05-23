@@ -55,10 +55,10 @@ original:
 
 この側面が明確になることにより、企業がより良いモニタリングシステムに投資すべきかどうかを判断できます。例えば、停止を検知するのにかかる時間を30分から数分に減らす良いセンサーや賢い分析機能を提供するモニタリングシステムへの投資は良いアイデアに見えます。
 
-Once you consider, though, that resolving an outage takes several hours, the picture changes. Investing let’s say half a million Dollars to reduce the MTTR from 4.5 hours to 4.1 hours doesn’t look that great anymore. Instead, you’d be looking to reduce the time spent resolving outages, e.g. by better transparency across systems or higher levels of automation that can quickly roll back the deployed software to an earlier, stable version. Drawing a better picture has helped us make better decisions.</p>
+しかし、復旧するのに数時間かかることを考えると話は変わります。MTTRを4.5時間から4.1時間に減らすために50万ドルの投資を行うのは、良いアイデアとは思えません。そのかわりに、復旧にかかる時間を短縮することに関心を持つでしょう。例えば、システム全体の透明性を高めたり、新しくデプロイしたソフトウェアを以前の安定したバージョンにすぐにロールバックできるように自動化のレベルを上げるようなことです。より良い絵を書くことにより、良い意思決定ができるようになりました。
 
 ## 教師を教育する
 
-確かに、システムの「モニタリング」側を説明するカードだけを手渡し参加者を少し引っ掛けました。しかし、同時に欠けている部分を発見し、全体像を描くために「ズームアウト」する能力は、アーキテクトにとって重要な能力です。
+確かにシステムの「モニタリング」側を説明するカードだけを手渡し参加者を少し引っ掛けました。しかし、同時に欠けている部分を発見し、全体像を描くために「ズームアウト」する能力は、アーキテクトにとって重要な能力です。
 
-<p>The most valuable part for me is that the exercise didn’t start out this way. Originally it was just a way to draw a few architectures and compare them. Through the dialog with attendees it evolved into combining it with the <em>Pirate Ship</em> and decision making, drawing multiple elements of the class into a single exercise. Teaching really is the best way to learn.</p>
+講師である私にとって最も重要なのは、元々、演習がこのように始まったのではないということです。最初はいくつかのアーキテクチャを描き、比較するだけでした。参加者との対話を通し、*海賊船*と意思決定を組みわせ、複数の要素を一つの演習にまとめた演習に発展しました。教えるとことは学ぶための本当に最適な方法です。
