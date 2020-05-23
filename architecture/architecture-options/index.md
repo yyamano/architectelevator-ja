@@ -12,22 +12,23 @@ original:
 
 ## 決定の遅延の価値は何でしょうか
 
-<p>A colleague once suggested that my KPI should be how many decisions I make. I had a gut feeling that this isn’t what I am after but was unable to intelligently articulate it at the time. However, my gut feel triggered a thought that the inverse, being able to postpone decisions, adds value. This thought led me to a new way of articulating the value I bring as chief architect: I sell options.</p>
+ある時、同僚がどれだけ多くの意思決定をするかがKPIであるべきだと提案したことがありました。直感的にそれは私が求めているものではないと思いましたが、その時は知的に明確な説明ができませんでした。
+しかし、その直感は逆のこと、つまり決断を先に伸ばすことができることが価値を生むという考えを生み出すきっかけとなりました。チーフアーキテクトとして私がもたらす価値を明確に表現する新しい方法が生まれたのです。私はオプションを売っているのです。
 
 ## オプション: 決定の遅延
 
-<p>In the financial world, an option is well-known as the right, but not the obligation, to buy or sell a financial instrument at a future point in time (or over a future time span for American-style options). An option is therefore a way to defer a decision: instead of deciding to buy or sell a stock today, you have the right to make that decision in the future, at a known price.</p>
+金融の世界では、オプションは将来のある時点(アメリカの場合は期間)で金融商品を売り買いする権利として知られています。しかし、売買は義務ではありません。つまり、オプションは決定を遅延させる方法です。今日、株を売買することを決めるのではなく、将来、決まった価格で売買の決定を行う権利を手に入れるのです。
 
-<p>Any person involved in the financial industry knows that options aren’t free: there’s a whole market for buying and selling options and other derivatives. If there was any doubt, it was cleared out by Fischer Black and Myron Scholes, who managed to compute the value of an option with their famous Black-Scholes Formula (see <a href="http://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model" target="_blank">Wikipedia</a>). One important parameter in establishing the value of the option is the <em>strike price</em>, i.e. the price at which the stock can be purchased in the future. The lower this strike price, the higher the value of the option.</p>
+金融業界で働く人は誰でもオプションは無料ではないことを知っています。売買のオプションや他のデリバティブのための市場が存在しています。何か疑問があったとしても、それはフィッシャー・ブラックとマイロン・ショールズによって、オプションの価値を計算する有名なブラック–ショールズ方程式([Wikipedia](http://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)を参照)で解決されています。オプションの価値を確立するための重要なパラメータの一つは*権利行使価格*、例えば将来株式を購入できる価格です。この権利行使価格が低いほど、オプションの価値は高くなります。
 
-## ITオプション
+## ITにおけるオプション
 
-<p>Translating the formula to IT architecture, selling options gives the business and IT a way to defer decisions. What size of server do you need to purchase for a system? If your application is architected to be horizontally scalable, this decision can be deferred: additional servers can be purchased later, at a known unit cost. What authentication mechanism should an application use? An architecture that properly separates concerns allows you to change that decision late in the project or even after go-live, at a nominal cost.</p>
+この方程式をITアーキテクチャに当てはめて考えると、オプションの販売はビジネスとITに意思決定を先延ばしにする方法を提供します。あるシステムのために購入する必要のあるサーバのサイズは? アプリケーションのアーキテクチャが水平方向にスケール可能なように設計されていれば、この決定を先延ばしにできます。追加のサーバを必要な分だけ後で買うことができますから。アプリケーションはどのような認証の仕組みを使うべきでしょうか? 関心が適切に分離されているアーキテクチャであれば、プロジェクトの後半や本番へのリリース後でも、ほんのわずかなコストでその決定を変更することができます。
 
-<p>Just as with financial options, it’s important that the right to exercise the option in the future is tied to a known price. In the world of IT architecture this means that a future change or addition to the system can be made at the same or similar cost as doing it today. Following Black-Scholes, options whose strike price is higher than the stock’s current price still have value. So it’s OK if exercising the (architecture) option in the future has a slightly higher price than today. The value of the option originates from being able to defer the decision until you have more information while fixing the price.</p>
+金融のオプションと同じように、将来、オプションを行使する権利が決まった価格で可能であることが重要です。ITアーキテクチャの世界ではこれは将来のシステムの変更、あるいは追加が、それを現在行うのと同じ、あるいは同程度のコストで可能であることを意味しています。ブラック–ショールズによると、現在の価格より権利行使価格の方が高いオプションにも価値があります。したがって、将来における(アーキテクチャの)オプションの行使に現在より少しばかり高い価格がついていても良いのです。価格を固定しながらより多くの情報を入手するまで意思決定を先延ばしにすることができることがオプションの価値なのです。
 
 ## オプションとボラリティ
 
-<p>When I once shared my “option” metaphor with a head of asset management, he not only grasped it immediately, but even took it to a new level: knowing Black-Scholes very well, he immediately concluded that with high volatility (denoted by the letter Sigma, σ, in the formula above) the value of the option increases. Therefore, in times of technological uncertainty, as we are facing them today, the value of the options that architecture sells increases. Businesses should therefore buy more options, i.e., invest more into architecture.</p>
+かつて「オプション」のメタファについて資産管理のトップと話したとき、彼はすぐにそれを理解しただけでなく、メタファを新しいレベルに引き上げました。ブラック–ショールズをよく理解しているので、(ブラック–ショールズ方程式のシグマ、σで表される)ボラリティが高ければオプションの価値が上がることをすぐに推測したのです。今日、私たちが直面しているような技術的な不確実性の高い時代にはアーキテクチャが販売するオプションの価値が高まります。したがって、ビジネスはより多くのオプションを購入すべき、つまりアーキテクチャにもっと投資すべきなのです。
 
-<p>Isn’t it fantastic when a person not from your field adopts your metaphor and takes it to a level that you had not considered yourself?</p>
+自分と異なる分野の人がメタファを使い、自分では想像していなかったほど高いレベルに持っていくのは素晴らしいことではありませんか?
