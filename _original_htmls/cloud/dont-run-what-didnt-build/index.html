@@ -1,0 +1,709 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Why run software you didn’t build? - The Architect Elevator</title>
+<meta name="description" content="A lot of modern cloud technology leverages containers. However, a non-trivial portion of enterprise applications don’t run easily in containers. The answer to this conundrum lies in taking a step back and asking a more fundamental question.">
+
+
+  <meta name="author" content="Gregor Hohpe">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="The Architect Elevator">
+<meta property="og:title" content="Why run software you didn’t build?">
+<meta property="og:url" content="https://architectelevator.com/cloud/dont-run-what-didnt-build/">
+
+
+  <meta property="og:description" content="A lot of modern cloud technology leverages containers. However, a non-trivial portion of enterprise applications don’t run easily in containers. The answer to this conundrum lies in taking a step back and asking a more fundamental question.">
+
+
+
+  <meta property="og:image" content="https://architectelevator.com/assets/img/overloaded_banner.jpg">
+
+
+
+  <meta name="twitter:site" content="@ghohpe">
+  <meta name="twitter:title" content="Why run software you didn’t build?">
+  <meta name="twitter:description" content="A lot of modern cloud technology leverages containers. However, a non-trivial portion of enterprise applications don’t run easily in containers. The answer to this conundrum lies in taking a step back and asking a more fundamental question.">
+  <meta name="twitter:url" content="https://architectelevator.com/cloud/dont-run-what-didnt-build/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://architectelevator.com/assets/img/overloaded_banner.jpg">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2019-01-14T12:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://architectelevator.com/cloud/dont-run-what-didnt-build/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Gregor Hohpe",
+      "url": "https://architectelevator.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="The Architect Elevator Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--blog">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          The Architect Elevator
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog" >Blog</a>
+            </li><li class="masthead__menu-item">
+              <a href="/book" >Books</a>
+            </li><li class="masthead__menu-item">
+              <a href="/workshops" >Workshops</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about" >About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/img/overloaded_banner.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Why run software you didn’t build?
+
+        
+      </h1>
+      
+        <p class="page__lead">A lot of modern cloud technology leverages containers. However, a non-trivial portion of enterprise applications don’t run easily in containers. The answer to this conundrum lies in taking a step back and asking a more fundamental question.
+</p>
+      
+      
+      
+      
+    </div>
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        
+        <a href="https://linkedin.com/in/ghohpe">
+          <img src="/assets/img/gregor.jpg" alt="Gregor Hohpe" itemprop="image">
+        </a>
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <a href="https://linkedin.com/in/ghohpe"><h3 class="author__name" itemprop="name">Gregor Hohpe</h3></a>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I help enterprises with their architecture strategy and cloud transformation journey by connecting the penthouse with the engine room. Ex-Google, Allianz, ThoughtWorks, Deloitte.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Singapore</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://architectelevator.com/feed.xml" rel="nofollow noopener noreferrer"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+          
+        
+          
+            <li><a href="https://twitter.com/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+          
+        
+          
+            <li><a href="https://linkedin.com/in/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Why run software you didn’t build?">
+    <meta itemprop="description" content="A lot of modern cloud technology leverages containers. However, a non-trivial portion of enterprise applications don’t run easily in containers. The answer to this conundrum lies in taking a step back and asking a more fundamental question.">
+    <meta itemprop="datePublished" content="January 14, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> </h4></header>
+              <ul class="toc__menu">
+  <li><a href="#enterprise-it--running-someone-elses-software">Enterprise IT = Running someone else’s software</a></li>
+  <li><a href="#running-other-peoples-software-is-actually-a-bad-deal">Running other people’s software is actually a bad deal!</a></li>
+  <li><a href="#saas---software-as-a-service">SaaS - Software as a Service</a></li>
+  <li><a href="#but-what-about">But what about…</a></li>
+  <li><a href="#what-about-the-software-you-do-build">What about the software you do build?</a></li>
+  <li><a href="#strategy--setting-the-vector">Strategy = Setting the vector</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+
+       
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-14T12:00:00+09:00">January 14, 2019</time></p>
+        
+
+        
+<div style="max-width:100%;padding: 6px;border: 1px;border-style: solid; border-color: seagreen;overflow:auto;">
+
+<a href="/book/cloudstrategy"><img src="/assets/img/CloudStrategy_Cover_Medium.jpg" alt="Cloud Strategy Book Cover" style="float:left;padding-right:15px;max-width:150px"></a>
+
+<p>An expanded version of this blog post is now available in my latest <a href="/book/cloudstrategy">e-book on Cloud Strategy</a>, along with 23 other real-life insights on successfully moving to the cloud.</p>
+
+</div>
+
+
+        <p>Many modern cloud platforms, such as <a href="https://cloud.google.com/solutions/cloud-services-platform/" target="_blank">Google’s Cloud Services Platform</a>, utilize <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank">containers</a> as the core mechanism for consistent deployment and operation of applications and services. When discussing container technology with traditional IT organizations, one response that I frequently hear is: “many of my enterprise applications, especially commercial off-the-shelf software, don’t run in containers, or at least not without the vendor’s support.” Fair point! The answer to this conundrum, interestingly, lies in taking a step back and asking a more fundamental question.</p>
+
+<h2 id="enterprise-it--running-someone-elses-software">Enterprise IT = Running someone else’s software</h2>
+
+<p>Enterprise It largely runs other people’s software. That’s because enterprise IT favors buying over building software, and in most cases rightly so. Over time, running other people’s software has essentially become the fundamental premise of IT: IT procures software and hardware, installs the software on the hardware, configures and integrates, and then operates it.</p>
+
+<p>It has also led to a state where IT is quite overloaded with all those applications.</p>
+
+<p><img src="/assets/img/overloaded_teaser.jpg" alt="Is your IT overloaded?" /></p>
+
+<p>If your IT looks a little bit like this, it’s time to slim down.</p>
+
+<h2 id="running-other-peoples-software-is-actually-a-bad-deal">Running other people’s software is actually a bad deal!</h2>
+
+<p>Come to think of it, running others’ software is actually a pretty bad deal:</p>
+
+<ul>
+  <li><strong>You have to pay for hardware</strong>. To make it worse, vendors’ sizing requirements are often very conservative because it’s easier for them to have you buy more hardware than to explain performance challenges.</li>
+  <li><strong>Installation is cumbersome</strong>. I once had a software vendor tell me that all the installation issues are due to our environment. My response was: isn’t the very purpose of installation to get your software to run in our environment?</li>
+  <li><strong>If something breaks, you’re guilty until proven innocent</strong>. Yup, it’s like that porcelain shop: you break, you pay. In this case, you pay for support. And if something breaks you have to convince support that it’s not due to your environment.</li>
+  <li><strong>You can’t make changes when you need them</strong>. And despite all this effort, if you need a new feature, you’ll have to wait until the next release - that is, if your feature is on the feature list. If not, you may be waiting a looooong time.</li>
+</ul>
+
+<p>Yup, running software you didn’t build isn’t actually all that great. It’s amazing how enterprise IT has gotten so used to this model that many don’t even question it.</p>
+
+<h2 id="saas---software-as-a-service">SaaS - Software as a Service</h2>
+
+<p>Luckily the world of cloud has brought us new options. Software-as-a-service (SaaS) makes the vendor run the applications for you; and apply patches; and upgrades; and scale; and replace faulty hardware. Now that sounds a lot better!</p>
+
+<p>Interestingly Salesforce was really the first one to lead us that route around 2005, but is by far no longer the only company following this model: you can handle all your communications and documents in the cloud thanks to <a href="https://gsuite.google.com" target="_blank">Google G Suite</a> (which started 2006 as “Google Apps for Your Domain”), HR and performance management with <a href="https://www.successfactors.com" target="_blank">SAP SuccessFactors</a>, ERP with <a href="https://www.sap.com/sea/products/erp/erp-cloud.html" target="_blank">SAP Cloud ERP</a>, service management with <a href="https://www.servicenow.com/" target="_blank">ServiceNow</a>, and integrate it all with <a href="https://www.mulesoft.com/platform/saas/cloudhub-ipaas-cloud-based-integration" target="_blank">Mulesoft CloudHub</a> (note: these are just examples; I have no affiliation with these companies and Google pays me regardless of whether I mention G Suite or not :-) ).</p>
+
+<h2 id="but-what-about">But what about…</h2>
+
+<p>Naturally, enterprise IT tends to have a long list of “buts”, so let’s look at some of these. The goal isn’t to dismiss these points, but to see what has changed to make them a lesser (or no) concern:</p>
+
+<ul>
+  <li>
+    <p><strong>Security</strong>: The days where having stuff on your premises means they are more secure, are over. Attack vectors like microprocessor vulnerabilities (<a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)" target="_blank">Spectre</a>, <a href="https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)" target="_blank">Meltdown</a>), compromised hardware, large-scale denial-of-service-attacks and nation-state attackers, just to name a few, make it nearly impossible to protect IT assets without the scale and operational automation of large cloud providers. Plus, on-premises often isn’t actually on on premise - it’s just another data center.</p>
+  </li>
+  <li>
+    <p><strong>Latency</strong>: Latency isn’t just a matter of distance, but also a matter of the number of hops, and the size of the pipes (saturation drives up latency or brings a service down altogether). Most of your customers and partners will access your services from the internet, so often the cloud is closer to them than your ISP and your data center.</p>
+  </li>
+  <li>
+    <p><strong>Control</strong>: Control is when reality matches what you tell it to be. In many enterprises, manual processes severely limit control: someone files a request, which gets approved, followed by a manual action. Who guarantees the action matches what was approved? A jump server and session recording?</p>
+  </li>
+  <li>
+    <p><strong>Cost</strong>: Most enterprises reduce cost by moving to the cloud thanks to better economies of scale and higher levels of automation.</p>
+  </li>
+  <li>
+    <p><strong>Integration</strong>: One could write whole books about integration - <a href="https://www.enterpriseintegrationpatterns.com" target="_blank">oh, wait</a>! Naturally, a significant part of installing software isn’t just about getting it to run, but also to connect it to other systems. A SaaS model doesn’t make this work go away completely, but the availability of APIs and pre-built interfaces (e.g. <a href="https://www.salesforce.com/campaign/google/" target="_blank">Salesforce and GSuite</a>) makes it a good bit easier. From that perspective, it’s also no surprise that Salesforce acquired Mulesoft.</p>
+  </li>
+</ul>
+
+<h2 id="what-about-the-software-you-do-build">What about the software you do build?</h2>
+
+<p>Naturally, there’s going to be some software that you do want to build, for example because it provides a competitive advantage. For that software, delivery velocity, availability, and scalability are key criteria. Luckily, <a href="https://www.linkedin.com/pulse/cloud-infrastructure-topic-gregor-hohpe/">cloud isn’t just about infrastructure</a>: it delivers here in form of Platform-as-a-Service that combines integrated CI/CD pipelines and container orchestration with Kubernetes or a fully-managed setup like <a href="https://cloud.google.com/kubernetes-engine/" target="_blank">Google Kubernetes Engine</a>.</p>
+
+<h2 id="strategy--setting-the-vector">Strategy = Setting the vector</h2>
+
+<p>Not all your on premise software will disappear tomorrow. But strategy is a direction, not current reality. I am convinced that not running software you didn’t build has become a viable IT strategy that’ll help you slim down your IT!</p>
+
+
+        
+      </section>
+
+      <section class="page__share">
+
+  <span class="page__share-title" style="padding-right: 10px;font-weight: bold;">Share on:</span>
+
+  <a href="https://twitter.com/intent/tweet?via=ghohpe&text=Why+run+software+you+didn%27t+build%3F%20https%3A%2F%2Farchitectelevator.com%2Fcloud%2Fdont-run-what-didnt-build%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Farchitectelevator.com%2Fcloud%2Fdont-run-what-didnt-build%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Farchitectelevator.com%2Fcloud%2Fdont-run-what-didnt-build%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+	    <section class="page__content">
+	    <h3 class="archive__subtitle">Learn 37 More Things About IT Transformation</h3>
+
+<div style="max-width:100%;padding-top: 1em">
+
+<a href="https://leanpub.com/37things" target="_blank" onclick="outbound('https://leanpub.com/37things'); return false;"><img src="/assets/img/37things_medium.jpg" alt="37 Things" style="float:left;padding-right:15px;max-width:220px"></a>
+
+<p>You can find more real-life stories in my book <i>37 Things One Architect Knows About IT Transformation</i>:</p>
+
+<ul style="overflow: hidden;">
+  <li><a href="https://leanpub.com/37things" target="_blank" onclick="outbound('https://leanpub.com/37things'); return false;">DRM-free E-Book</a> with money-back guarantee</li>
+  <li>Hard copy via <a href="https://www.amazon.com/gp/product/1537082981/ref=as_li_tl?ie=UTF8&amp;tag=enterpriseint-20&amp;camp=1789&amp;creative=9325&amp;linkCode=as2&amp;creativeASIN=1537082981&amp;linkId=3edef6b676064876a560f8d607fdc3d4" target="_blank">Amazon US</a>,  <a href="https://www.amazon.co.uk/Things-Architect-Knows-About-Transformation/dp/1537082981" target="_blank">Amazon UK</a>, <a href="http://www.amazon.de/Things-Architect-Knows-About-Transformation/dp/1537082981" target="_blank">Amazon Europe</a></li>
+</ul>
+
+</div>
+		</section>
+	  	  
+
+      <footer class="page__meta">
+ 
+      </footer>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/important_decisions_teaser.jpg"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/architecture/important-decisions/" rel="permalink">Your most important architecture decisions might be the ones you didn't know you made.
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2020-01-06T12:00:00+09:00">Jan 06, 2020</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">Conscious decision making is a major step towards better architecture.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/enterprise_non_cloud_teaser.png"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/cloud/enterprise-non-cloud/" rel="permalink">Don't build an enterprise non-cloud!
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2019-12-12T12:00:00+09:00">Dec 12, 2019</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">When making cloud enterprise ready, be careful not to throw the cloud baby out with the enterprise bathwater.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/fruit_basket_teaser.jpg"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/architecture/platforms-fruit-salad/" rel="permalink">Is your platform a Fruit Basket or Fruit Salad?
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2019-12-05T12:00:00+09:00">Dec 05, 2019</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">Good platforms are like fruit salads. But some people will want to pick out just their favorite fruit.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+ 
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser" style="max-height: 200px;">
+        <img src=
+          
+            "/assets/img/coin_flip_teaser.jpg"
+          
+          alt="">
+      </div>
+    
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-top: 1em;">
+      
+        <a href="/transformation/it-decisions/" rel="permalink">Are IT's biggest decisions its worst?
+</a>
+      
+    </h2>
+    
+    
+       <p class="page__meta"><strong>Posted: </strong> <time datetime="2019-10-17T12:00:00+09:00">Oct 17, 2019</time></p>
+    
+     <p class="page__meta"></p>
+    <p class="archive__item-excerpt" itemprop="description">More steering committees don’t necessarily lead to better decisions.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <script type="text/javascript" src="/assets/js/outbound.js"></script>	
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+	
+	<li>&nbsp;</li>
+	<li><strong>CONTACT:</strong></li>
+	
+    
+      
+        
+          <li><a href="https://linkedin.com/in/ghohpe" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+    
+
+	<li><i class="fas fa-envelope" aria-hidden="true"></i>
+	<script type="text/javascript" src="/assets/js/mail.js"></script>	
+	</li>
+	
+
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Gregor Hohpe. All opinions my own.
+
+</div>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+  <script>
+  window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+  ga('create','UA-131526375-1','auto');
+  ga('set', 'anonymizeIp', false);
+  ga('send','pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
